@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 映射文件中标签的id值要和dao层接口中的方法名相同 -->
+<mapper namespace="com.zzy.dao.UseDao">
+    <insert id="add">
+      insert into user values(null,#{sex.ordinal})
+    </insert>
+    <resultMap type="Use" id="UseMap">
+    <id column="id" property="id"/>
+    <result column="sex" property="sex" javaType="com.zzy.bean.Sex" typeHandler="org.apache.ibatis.type.EnumOrdinalTypeHandler"/>
+    </resultMap>
+    <select id="list" resultMap="UseMap">
+    select * from user
+    </select>
+</mapper>
